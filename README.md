@@ -1,166 +1,142 @@
 # 🤖 Chatbot Spring Boot
 
-## 📝 Overview
-Chatbot Spring Boot is a web application built with Spring Boot, integrated with artificial intelligence (AI) to provide a smart chatbot experience.
+## Giới thiệu
+Chatbot Spring Boot là một ứng dụng web được xây dựng bằng Spring Boot, tích hợp trí tuệ nhân tạo (AI) để tạo ra một chatbot thông minh. Dự án sử dụng các công nghệ sau:
 
-## 🛠️ Technologies Used
-- **Spring AI**: Handles AI-related tasks.
-- **PostgreSQL**: Used as the database.
-- **Google OAuth2**: Handles user authentication.
-- **FastText**: Supports natural language processing.
+- **Spring AI** để xử lý các tác vụ AI.
+- **PostgreSQL** làm cơ sở dữ liệu.
+- **Google OAuth2** để xác thực người dùng.
+- **FastText** để hỗ trợ xử lý ngôn ngữ tự nhiên.
 
-The application can run locally for development or be deployed on platforms like Railway.
+Ứng dụng có thể chạy cục bộ để phát triển hoặc được triển khai trên nền tảng như Railway.
 
-## 📋 System Requirements
-- **Java**: Version 17 or above
-- **Maven**: Version 3.8.0 or above
-- **PostgreSQL**: Version 13 or above (if running locally)
+## Yêu cầu
+Để chạy dự án, bạn cần:
 
-## 📂 Required Accounts
-- **OpenAI Account** (for AI API)
-- **Google Cloud Account** (for OAuth2 authentication)
-- **Railway Account** (for deployment)
+- **Java**: Phiên bản 17 hoặc cao hơn
+- **Maven**: Phiên bản 3.8.0 hoặc cao hơn
+- **PostgreSQL**: Phiên bản 13 hoặc cao hơn (nếu chạy cục bộ)
 
-## 🚀 Installation
+### Tài khoản cần thiết
+- **Tài khoản OpenAI** (cho API AI)
+- **Tài khoản Google Cloud** (cho xác thực OAuth2)
+- **Tài khoản Railway** (cho triển khai, nếu cần)
 
-### 1. Clone Repository
+## 🚀 Cài đặt
+
+### 1. Clone repository
 ```bash
 git clone https://github.com/Min-Trees/chatbot_springboot.git
 cd chatbot_springboot
 ```
 
-### 2. Install Dependencies
+### 2. Cài đặt dependencies
 ```bash
 mvn clean install
 ```
 
-### 3. Configure FastText
-Ensure `model.bin` and `training_data.txt` are placed in the correct location based on project configuration (typically in `src/main/resources` or the root directory).
+### 3. Cấu hình FastText
+- Đảm bảo các file `model.bin` và `training_data.txt` được đặt đúng vị trí theo cấu hình FastText của dự án (thường trong thư mục `src/main/resources` hoặc thư mục gốc).
+- Liên hệ với nhóm phát triển nếu cần thêm thông tin về file mô hình.
 
-Contact the development team for more information about the model files.
+## 🧪 Chạy ứng dụng
 
-## 🧪 Run the Application
-
-### 🔧 Run Locally
+### 🔧 Chạy cục bộ
 ```bash
 mvn spring-boot:run
 ```
-The application will be available at: [http://localhost:8080](http://localhost:8080)
+- Ứng dụng sẽ hoạt động tại: [http://localhost:8080](http://localhost:8080)
+- Sử dụng Google OAuth2 để đăng nhập và tương tác với chatbot
 
-Login using Google OAuth2 to interact with the chatbot.
+### ☁️ Triển khai trên Railway
+- Đẩy code lên GitHub sau khi đảm bảo không chứa thông tin nhạy cảm
+- Kết nối repository với Railway qua dashboard
+- Cấu hình ứng dụng theo hướng dẫn của Railway
+- Kiểm tra URL triển khai để truy cập chatbot
 
-### ☁️ Deploy on Railway
-- Push code to GitHub (ensure no sensitive information is included)
-- Connect repository to Railway via dashboard
-- Configure environment variables as needed
-- Check the deployed URL to use the chatbot
-
-## 📁 Project Structure
+## 📁 Cấu trúc dự án
 ```
 chatbot_springboot/
 ├── src/
-│   └── main/
-│       ├── java/com/ai/SpringAI/
-│       │   └── SpringAiApplication.java
-│       └── resources/
-│           └── application.properties
+│   ├── main/
+│   │   ├── java/com/ai/SpringAI/
+│   │   │   └── SpringAiApplication.java
+│   │   └── resources/
+│   │       └── application.properties
 ├── .gitignore
 ├── pom.xml
 └── README.md
 ```
-- **SpringAiApplication.java**: Main entry point of the Spring Boot application
-- **application.properties**: Configuration file
-- **.gitignore**: Ensures sensitive files like API keys and local configs are not committed
 
-## 🔐 Security
-- **Do not commit sensitive information**: API keys, passwords, and OAuth secrets should be securely stored
+- `SpringAiApplication.java`: Điểm khởi chạy của ứng dụng Spring Boot
+- `application.properties`: File cấu hình chính cho Spring Boot
+- `.gitignore`: Đảm bảo các file nhạy cảm (như file môi trường) không được commit
 
-### GitHub Push Protection
-If push is blocked due to secrets, remove them using:
+## 🔐 Bảo mật
+
+- Không commit thông tin nhạy cảm: Các thông tin như API key, mật khẩu, hoặc OAuth secrets phải được quản lý an toàn và không được đẩy lên repository
+
+- **GitHub Push Protection**: Nếu gặp lỗi đẩy code do chứa secrets, sử dụng công cụ như git filter-repo để xóa thông tin nhạy cảm khỏi lịch sử Git:
 ```bash
 pip install git-filter-repo
 git filter-repo --replace-text secrets.txt --force
 ```
 
-- Contact the development team for safe secret configuration guidance
+- **Quản lý secrets**: Liên hệ nhóm phát triển để biết cách cấu hình an toàn trên môi trường cục bộ hoặc triển khai
 
-## 💡 Feedback & Contribution
-- Open issues to report bugs or suggest features
-- Submit pull requests with code or documentation improvements
+## 💡 Góp ý
 
-## 📬 Contact
+Nếu bạn muốn đóng góp vào dự án:
+- Mở issue để báo lỗi hoặc đề xuất tính năng
+- Gửi pull request với các cải tiến code
+
+## 📬 Liên hệ
 - **GitHub**: [Min-Trees](https://github.com/Min-Trees)
-- **Support**: Via GitHub Issues on the repository
+- **Hỗ trợ**: Liên hệ qua GitHub Issues của repository
 
 ---
+## 🧰 Cài đặt & Cấu hình
 
-# 📘 ABC-ENGLISH (E-learning Platform)
-
-## 🧾 Overview
-ABC-ENGLISH is an e-learning platform developed using Spring Boot. It supports features such as user registration, course management, progress tracking, interactive messaging, and forums.
-
-## 🏗️ Architecture
-### Client-Server Model
-- **Client**: Handles user interactions
-- **Server (Spring Boot)**: Manages business logic, stores data, and provides REST APIs
-
-## 🌟 Features
-### 👤 User Registration and Login
-- Two-step verification for secure sign-up
-1. User submits registration form
-2. System marks user as "unverified" and sends a verification email
-
-### ✉️ Verification Email
-- Email contains a verification link with a unique token
-
-### 🧑‍💼 Profile Management
-- Users can edit profile details and track learning progress
-
-### 📚 Course Catalog
-- Organized by Level: Beginner, Intermediate, Advanced
-- Topics: Grammar, Vocabulary, Pronunciation
-
-### 📖 Course Details
-- Combines videos, text lessons, exercises, and quizzes
-- Chapters cover specific topics with theory and practice
-
-### 📝 Assignments & Tests
-- Multiple choice and essay questions with automatic grammar evaluation
-
-### 💬 Forum & Messaging
-- Discussion space for teachers and students
-- Direct messaging for queries and feedback
-
-### 🔔 Notifications
-- Alerts for new lessons
-- Reminders for upcoming deadlines
-
-## 🧰 Setup Instructions
-
-### ⚙️ Prerequisites
-- Java 17+
+### Yêu cầu
+- Java JDK 17 hoặc cao hơn
 - Maven
-- SQL Server
+- PostgreSQL đã cài đặt
 
-### 🛠️ Setup SQL Server Database
-1. Open SSMS and run:
+### Bước 1: Tạo cơ sở dữ liệu
+Dùng công cụ PostgreSQL như pgAdmin và chạy:
 ```sql
-CREATE DATABASE EducationSystem1;
+CREATE DATABASE education_system;
 ```
 
-2. Configure `application.yaml` in `src/main/resources` to connect to the database
+### Bước 2: Cấu hình file `application.properties`
+Chỉnh sửa file `src/main/resources/application.properties`:
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/education_system
+spring.datasource.username=your_db_username
+spring.datasource.password=your_db_password
+```
 
-### ▶️ Run the Project
+## 🚀 Chạy dự án
+
+### 1. Clone repository
 ```bash
 git clone https://github.com/Min-Trees/Backend_ABC_English.git
-cd <project-folder>
+cd Backend_ABC_English
+```
+
+### 2. Cài đặt dependencies
+```bash
 mvn clean install
 ```
 
-## 🖼️ Screenshots
-- Login: `screenshot/login.jpg`
-- Verify Email: `screenshot/verify_email.jpg`
-- Profile: `screenshot/profile.jpg`
-- Course List: `screenshot/course.jpg`
-- Course Detail: `screenshot/detail_course1.jpg` to `detail_course3.jpg`
-- Test & Auto-Grading: `screenshot/test_mutichoi
+### 3. Chạy dự án
+```bash
+mvn spring-boot:run
+```
+
+Ứng dụng sẽ hoạt động tại: [http://localhost:8080](http://localhost:8080)
+
+---
+
+> Tài liệu này gộp hai dự án sử dụng Spring Boot: một chatbot sử dụng Spring AI và một nền tảng học tiếng Anh trực tuyến. Nếu bạn muốn chuyển nó thành PDF hoặc slide trình chiếu, mình có thể hỗ trợ.
+
