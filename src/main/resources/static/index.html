@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Đại học Thủ Dầu Một</title>
+</head>
+<body>
+<div id="chatbox">
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Hỏi tôi bất cứ điều gì...">
+    <button onclick="sendMessage()">Gửi</button>
+    <button onclick="resetConversation()">Reset</button>
+</div>
+
+<script>
+    function sendMessage() {
+        const userInput = document.getElementById("userInput").value;
+        fetch('/api/chatbot/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(userInput)
+        })
+            .then(response => response.text())
+            .then(data => {
+                const messagesDiv = document.getElementById("messages");
+                messagesDiv.innerHTML += `<p><b>Bạn:</b> ${userInput}</p>`;
+                messagesDiv.innerHTML += `<p><b>Bot:</b> ${data}</p>`;
+                document.getElementById("userInput").value = "";
+            });
+    }
+
+    function resetConversation() {
+        fetch('/api/chatbot/reset', { method: 'POST' })
+            .then(() => {
+                document.getElementById("messages").innerHTML = "";
+            });
+    }
+</script>
+</body>
+</html>
