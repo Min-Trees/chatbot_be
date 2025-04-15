@@ -138,5 +138,4 @@ mvn spring-boot:run
 
 ---
 
-> Tài liệu này gộp hai dự án sử dụng Spring Boot: một chatbot sử dụng Spring AI và một nền tảng học tiếng Anh trực tuyến. Nếu bạn muốn chuyển nó thành PDF hoặc slide trình chiếu, mình có thể hỗ trợ.
 
