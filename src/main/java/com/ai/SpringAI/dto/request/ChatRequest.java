@@ -10,6 +10,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChatRequest {
-    private UUID userId;
+    private String userId;
     private String message; // Nội dung tin nhắn từ người dùng
 }

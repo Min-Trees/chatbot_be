@@ -41,7 +41,11 @@ public class SecurityConfig {
                             String jwtToken = JwtUtil.generateToken(username);
                             OidcUser oidcUser = (OidcUser) oauth2User;
                             User savedUser = oAuthUserService.processOAuthPostLogin(oidcUser);
-                            response.sendRedirect("http://localhost:3000/chat?token=" + jwtToken);
+                            String userId = savedUser.getUserId().toString();
+                            System.out.println("OAuth2 email: " + username);
+                            System.out.println("Generated JWT: " + jwtToken);
+                            response.sendRedirect("http://localhost:3000/chat?token=" + jwtToken + "&userId=" + userId);
+
                         })
                 )
                 .sessionManagement(session -> session
