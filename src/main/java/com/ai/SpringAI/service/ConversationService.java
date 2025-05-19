@@ -5,6 +5,7 @@ import com.ai.SpringAI.entity.Conversations;
 import com.ai.SpringAI.repository.ConversationRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ConversationService {
+    @Autowired
     private ConversationRepository conversationRepository;
 
     public ConversationResponse getConversation(UUID conversationId) {

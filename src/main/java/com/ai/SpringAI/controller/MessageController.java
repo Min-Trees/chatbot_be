@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/message")
+@RequestMapping("/api/v1")
 public class MessageController {
     @Autowired
     private MessageService messageService;
@@ -21,7 +21,7 @@ public class MessageController {
     public MessageResponse getMessage(@RequestBody Integer id) {
         return messageService.getMessage(id);
     }
-    @GetMapping("/conversations/{conversationId}/messages")
+    @GetMapping("/conversation/{conversationId}/messages")
     public ResponseEntity<Page<MessageResponse>> getMessagesByConversation(
             @PathVariable UUID conversationId,
             @RequestParam(defaultValue = "0") int page,
